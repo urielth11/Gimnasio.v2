@@ -1,0 +1,133 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout/menu :: head"></head>
+
+<body class=" layout-fixed">
+	<!-- BODY -->
+
+	<div class="wrapper">
+		<!-- WRAPPER -->
+
+		<nav class="main-header navbar ">
+			<!-- NAVBAR -->
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
+					href="#" role="button"><i class="fas fa-bars"></i></a></li>
+
+			</ul>
+		</nav>
+
+		<aside th:insert="layout/menu :: aside"></aside>
+		<!-- MENU ASIDE -->
+
+		<div class="content-wrapper">
+			<!-- CONTENIDO DE LA PAGINA -->
+
+			<div class="container-table-index py-4">
+				<!-- PY4 ES MARGIN TOP -->
+				<div class="card bg-light">
+
+					<div class="card-header">
+						<!-- Head-->
+						<h5 th:text="${titulo}"></h5>
+					</div>
+
+					<div class="card-body">
+						<!-- body-->
+						<a class="btn btn-primary " th:href="@{/pi/registrar}">Nueva
+							PI</a> <br> <br>
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered display"
+										id="example">
+										<thead class="thead-inverse">
+											<tr>
+												<th>#</th>
+												<th>Codigosssss</th>
+												<th>Dni</th>
+												<th>Accion</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="usu : ${usuarios}">
+												<td th:text="${usuStat.count}">1</td>
+												<td th:text="${usu.codUsu}"></td>
+												<td th:text="${usu.persona.nro_Dni}"></td>
+												<td>
+
+													<button class="btn btn-primary dropdown-toggle"
+														data-toggle="dropdown">
+														<span class="iconify" data-icon="ion-ios-cog"></span>
+													</button>
+													<div class="dropdown-menu">
+														<a class="dropdown-item"
+															th:href="@{'/usuario/editar/' + ${usu.codUsu}}">
+															Editar</a>
+													</div>
+												</td>
+											</tr>
+
+										</tbody>
+
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<p class="text-center">
+							<a href="#" data-toggle="modal" data-target="#myModal">Modal</a>
+						</p>
+
+						<div class="modal fade bd-example-modal-lg" id="myModal"role="dialog"><!-- Modal -->
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content"><!-- Modal content-->
+									<div class="modal-header">
+										<h4 class="modal-title">Exporta tu excel de preferencia</h4>
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+									<div class="modal-body"><!-- Modal body-->
+										<form th:action="@{/ordenes/tabla_personalizada_ini2}">
+											<p>Selecciona las columnas que quieras exportar :</p>
+											<br>
+											<div class="row" id="listado">						
+											</div>
+											<script></script>
+											<div class="modal-footer">
+												<button id="checkBtn" type="submit" class="btn btn-primary">Exportar</button>
+												<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div><!-- Fin del modal -->
+			
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- /CONTENIDO DE LA PAGINA -->
+
+	</div>
+
+	<!-- /WRAPPER -->
+
+
+
+
+	<!-- FOOTER -->
+	<footer th:replace="layout/menu :: footer"> </footer>
+
+	<!--  SCRIPTS _(JS,AJAX,JQUERY,ETC) -->
+	<div th:insert="layout/menu :: scripts"></div>
+	<!--  <div th:insert="layout/layout :: scripts"></div>-->
+
+</body>
+
+
+</html>

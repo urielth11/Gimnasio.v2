@@ -1,0 +1,250 @@
+.content-fichas {
+    margin: auto;
+    position: inherit;
+}
+
+.content-ficha {
+    margin: auto;
+    width: 49%;
+    height: auto;
+    position: relative;
+    display: inline-block;
+}
+
+.card-s-rigth {
+    float: right;
+}
+
+.casillas-main {
+    float: rigth;
+}
+
+.casilla-p {
+    width: 30%;
+    float: rigth;
+}
+.card_cab {
+width: 100%;
+height: 100%;	
+}
+
+.alert{
+    display: block;
+    padding: 12px 20px;
+    background: #f8d7da;
+    color: #721c24;
+    margin-bottom: 5px;
+    border: 1px solid #f5c6cb;
+    width: 250px;
+}
+
+.container-table-index{
+	width: 100%;
+	margin: auto;
+	padding: 35px;
+}
+
+.login {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-color: hsl(182, 94%, 21%);
+    background-repeat: no-repeat;
+}
+
+
+.card0 {
+    box-shadow: 0px 4px 8px 0px #757575;
+    border-radius: 0px;
+}
+
+.card2 {
+    margin: 0px 40px;
+}
+
+.logo {
+    width: 120px;
+    height: 80px;
+    margin-top: 20px;
+    margin-left: 35px;
+}
+
+.image {
+    width: 360px;
+    height: 280px;
+}
+
+.border-line {
+    border-right: 1px solid #EEEEEE;
+}
+.line {
+    height: 1px;
+    width: 45%;
+    background-color: #E0E0E0;
+    margin-top: 10px;
+}
+
+.text-sm {
+    font-size: 14px !important;
+}
+
+::placeholder {
+    color: #BDBDBD;
+    opacity: 1;
+    font-weight: 300;
+}
+
+:-ms-input-placeholder {
+    color: #BDBDBD;
+    font-weight: 300;
+}
+
+::-ms-input-placeholder {
+    color: #BDBDBD;
+    font-weight: 300;
+}
+
+input,
+textarea {
+    padding: 10px 12px 10px 12px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid rgb(174, 169, 214);
+    outline-width: 0;
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0;
+}
+
+a {
+    color: inherit;
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 991px) {
+    .logo {
+        margin-left: 0px;
+    }
+
+    .image {
+        width: 300px;
+        height: 220px;
+    }
+
+    .border-line {
+        border-right: none;
+    }
+
+    .card2 {
+        border-top: 1px solid #EEEEEE !important;
+        margin: 0px 15px;
+    }
+    
+}
+    
+ 
+.form-control{
+    height: 40px;
+    box-shadow: none;
+    color: #085675;
+}
+.form-control:focus{
+    border-color: #5cb85c;
+}
+.form-control, .btn{        
+    border-radius: 3px;
+}
+.signup-form{
+    width: 800px;
+    margin: 50px auto;
+    padding: 80px 0;
+}
+.signup-form h2{
+    color: #636363;
+    margin: 0 0 15px;
+    position: relative;
+    text-align: center;
+}
+.signup-form h2:before, .signup-form h2:after{
+    content: "";
+    height: 2px;
+    width: 30%;
+    background: #130101c0;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+}	
+.signup-form h2:before{
+    left: 0;
+}
+.signup-form h2:after{
+    right: 0;
+}
+.signup-form .hint-text{
+    color: rgb(17, 5, 5);
+    margin-bottom: 30px;
+    text-align: center;
+}
+.signup-form form{
+    color: rgba(41, 7, 7, 0.835);
+    border-radius: 3px;
+    margin-bottom: 15px;
+    background: #f2f3f79d;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+.signup-form .form-group{
+    margin-bottom: 20px;
+}
+.signup-form input[type="checkbox"]{
+    margin-top: 3px;
+}
+.signup-form .btn{        
+    font-size: 16px;
+    font-weight: bold;		
+    min-width: 140px;
+    outline: none !important;
+}
+.signup-form .row div:first-child{
+    padding-right: 10px;
+}
+.signup-form .row div:last-child{
+    padding-left: 10px;
+}    	
+.signup-form a{
+    color: rgb(34, 23, 23);
+    text-decoration: underline;
+}
+.signup-form a:hover{
+    text-decoration: none;
+}
+.signup-form form a{
+    color: #5cb85c;
+    text-decoration: none;
+}	
+.signup-form form a:hover{
+    text-decoration: underline;
+}  
+
+
+
