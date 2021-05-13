@@ -40,4 +40,16 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return query.getResultList();
 	}
 
+	@Override
+	public Usuario findById(int id) {
+		Session session = factory.getCurrentSession();
+		Usuario usu = null;
+		try {
+			usu = session.find(Usuario.class, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return usu;
+	}
+
 }

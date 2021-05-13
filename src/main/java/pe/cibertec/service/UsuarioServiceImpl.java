@@ -23,4 +23,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return autoDAO.listAll();
 	}
 
+	@Override
+	public Usuario findById(int id) {
+		return autoDAO.findById(id);
+	}
+
 }
