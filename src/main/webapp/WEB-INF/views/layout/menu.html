@@ -9,10 +9,8 @@
 	<!-- Para que sea responsive -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Bootstrap 4 -->
-	<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-	<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" th:href="@{/resources/menu/plugins/fontawesome-free/css/all.min.css}" />
 	<!-- Ionicons -->
@@ -24,22 +22,25 @@
 	<!-- Chooseyou Styles -->
 	<link rel="stylesheet" th:href="@{/resources/css/chooseyou.css}" />
 	<!-- Tempusdominus Bbootstrap 4 -->
-	<link rel="stylesheet" th:href="@{/resources/menu/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css}" />
+	<link rel="stylesheet"
+		th:href="@{/resources/menu/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css}" />
 
 	<!-- Theme style -->
 	<link rel="stylesheet" th:href="@{/resources/menu/dist/css/adminlte.min.css}" />
 	<!-- overlayScrollbars -->
 	<link rel="stylesheet" th:href="@{/resources/menu/plugins/overlayScrollbars/css/OverlayScrollbars.min.css}" />
-	
+
 	<!-- CSS tabla -->
 	<link rel="stylesheet" th:href="@{/resources/tabla/main.css}">
-	
-	<!--datables CSS básico-->
-	<link rel="stylesheet" type="text/css"
-		th:href="@{/resources/tabla/datatables/datatables.min.css}" />
-	<link rel="stylesheet" type="text/css"
-		th:href="@{/resources/tabla/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css}"/>
 
+	<!--datables CSS básico-->
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/tabla/datatables/datatables.min.css}" />
+	<link rel="stylesheet" type="text/css"
+		th:href="@{/resources/tabla/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css}" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+	<link rel="stylesheet" th:href="@{/resources/datepicker/bootstrap-datepicker.css}">
+	<link rel="stylesheet" th:href="@{/resources/alertifyjs/css/alertify.css}">
+	<link rel="stylesheet" th:href="@{/resources/alertifyjs/css/alertify.min.css}">
 
 
 </head>
@@ -97,8 +98,8 @@
 		<!--sidebar-dark-primary-->
 		<!--sidebar-dark-primary-->
 		<!-- Brand Logo -->
-		<a href="#" class="brand-link"> <img th:src="@{/resources/images/LOGO.png}" alt="IGH Logo" class="brand-image" /> <span
-				class="brand-text">IGH
+		<a href="#" class="brand-link"> <img th:src="@{/resources/images/LOGO.png}" alt="IGH Logo"
+				class="brand-image" /> <span class="brand-text">IGH
 				Ingenieria</span>
 		</a>
 
@@ -189,7 +190,7 @@
 		<script th:src="@{/resources/menu/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
 		<!-- css principal -->
 		<script th:src="@{/resources/menu/dist/js/adminlte.js}"></script>
-		
+
 		<!-- el js es opcional -->
 		<!-- jQuery primero, luego Bootstrap JS -->
 		<script th:src="@{/resources/js/jquery-3.2.1.min.js}"></script>
@@ -201,24 +202,25 @@
 
 		<script th:src="@{/resources/tabla/jquery/jquery-3.3.1.min.js}"></script>
 		<!-- datatables JS -->
-		<script type="text/javascript"
-			th:src="@{/resources/tabla/datatables/datatables.min.js}"></script>
+		<script type="text/javascript" th:src="@{/resources/tabla/datatables/datatables.min.js}"></script>
 		<script type="text/javascript" th:src="@{/resources/tabla/main.js}"></script>
 
 
 		<!-- para usar botones en datatables JS -->
-		<script
-			th:src="@{/resources/tabla/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js}"></script>
+		<script th:src="@{/resources/tabla/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js}"></script>
 		<script th:src="@{/resources/tabla/datatables/JSZip-2.5.0/jszip.min.js}"></script>
 		<script th:src="@{/resources/tabla/datatables/pdfmake-0.1.36/pdfmake.min.js}"></script>
 		<script th:src="@{/resources/tabla/datatables/pdfmake-0.1.36/vfs_fonts.js}"></script>
-		<script
-			th:src="@{/resources/tabla/datatables/Buttons-1.5.6/js/buttons.html5.min.js}"></script>
+		<script th:src="@{/resources/tabla/datatables/Buttons-1.5.6/js/buttons.html5.min.js}"></script>
 
 		<script th:src="@{/resources/js/ubidego.js}"></script>
 		<script th:src="@{/resources/js/app.js}"></script>
-    <script th:src="@{/resources/js/validacion.js}"></script>
-    <script th:src="@{/resources/js/revisar.js}"></script>
+		<script th:src="@{/resources/js/validacion.js}"></script>
+		<script th:src="@{/resources/js/revisar.js}"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+		<script th:src="@{/resources/alertifyjs/alertify.js}"></script>
+		<script th:src="@{/resources/alertifyjs/alertify.min.js}"></script>
 	</div>
 
 

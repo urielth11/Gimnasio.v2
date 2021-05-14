@@ -34,7 +34,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public void delete(String id) {
 		Usuario bean = usuarioDAO.findById(id);
-		bean.setEstUsu(0);
+		switch (bean.getEstUsu()) {
+		case 1:
+			bean.setEstUsu(0);
+			break;
+		default:
+			bean.setEstUsu(1);
+			break;
+		} 
 		usuarioDAO.update(bean);
 	}
 

@@ -53,13 +53,24 @@ public class UsuarioController {
 		return bean;
 	}
 	
+	@RequestMapping(value = "/eliminar/{id}")
+	public String eliminar(Model model, @PathVariable String id) {
+		Usuario bean = null;
+		try {
+			usuarioS.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/usuario";
+	}
+	
 	@RequestMapping(value = "/grabar")
 	public String grabar(RedirectAttributes redirect, @ModelAttribute Usuario usuario) {
 		try {
 			usuarioS.saveUpdate(usuario);
-			redirect.addFlashAttribute("MENSAJE","Usuario registrado");
+			redirect.addFlashAttribute("MENSAJE","Usuario grabado");
 		} catch (Exception e) {
-			redirect.addFlashAttribute("MENSAJE","Error en el registro de auto");
+			redirect.addFlashAttribute("MENSAJE","Error al grabar usuario");
 			e.printStackTrace();
 		}
 		

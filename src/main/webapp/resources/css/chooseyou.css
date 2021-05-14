@@ -245,6 +245,29 @@ a {
 .signup-form form a:hover{
     text-decoration: underline;
 }  
-
+/****************************/
+.alertify .ajs-dialog {
+	    top: 50%;
+	    transform: translateY(-50%);
+	    margin: auto;
+	}
+	
+	.ajs-header{
+		background-color: #286090 !important;
+		color: white !important;
+		/*text-align: center;*/
+		font-size: 18px;
+		font-weight: bold;
+	}
+	.ajs-ok{
+		color: #fff;
+	    background-color: #007bff;
+	    border-color: #007bff;
+	}
+	.ajs-cancel{
+		color: #fff;
+	    background-color: #dc3545;
+	    border-color: #dc3545;
+	}
 
 
