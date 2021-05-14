@@ -57,8 +57,8 @@
 														<span class="iconify" data-icon="ion-ios-cog"></span>
 													</button>
 													<div class="dropdown-menu">
-														<a class="dropdown-item btn-editar"
-															th:href="@{'/usuario/editar/' + ${usu.codUsu}}" data-toggle="modal" data-target="#myModal">
+														<a class="dropdown-item"
+															th:href="@{'/usuario/editar/' + ${usu.codUsu}}">
 															Editar</a>
 													</div>
 												</td>
@@ -93,30 +93,27 @@
 				<div class="modal-body">
 					<!-- Modal body-->
 					<form method="POST" id="idRegistra" th:object="${usuario}" th:action="@{/usuario/grabar}">
-						<input type="hidden" th:field="*{codUsu}" id="codUsu">
-						<input type="hidden" th:field="*{estUsu}" id="estUsu">
+						<input type="hidden" id="codUsu" th:field="*{codUsu}">
 						<div class="container">
 							<div class="row">
 								<div class="form-group has-feedback col-md-6">
 									<label for="exampleInputEmail1"><b>DNI</b></label><br>
 									<i class="fas fa-prescription-bottle-alt form-control-feedback2"></i>
-									<select class="form-control" th:field="*{persona.nro_Dni}" id="nro_Dni">
+									<select class="form-control" name="persona" id="persona" th:field="*{persona}">
 										<option value="0">[Seleccione DNI]</option>
-										<option th:each="personaS:${personas}"
-											th:value="${personaS.nro_Dni}"
-											th:text="${personaS.nro_Dni}"
-											th:selected="(${personaS.nro_Dni} == *{persona.nro_Dni})"></option>
+										<option th:each="persona:${personas}"
+											th:value="${persona}"
+											th:utext="${persona.nro_Dni}" />
 									</select>
 								</div>
 								<div class="form-group has-feedback col-md-6">
 									<label for="exampleInputEmail1"><b>Rol</b></label><br>
 									<i class="fas fa-prescription-bottle-alt form-control-feedback2"></i>
-									<select class="form-control" th:field="*{rol.idRol}" id="idRol">
+									<select class="form-control" name="rol" id="rol" th:field="*{rol}">
 										<option value="0">[Seleccione Rol]</option>
-										<option th:each="rolS:${roles}"
-											th:value="${rolS.idRol}"
-											th:utext="${rolS.cargo}" 
-											th:selected="(${rolS.idRol} == *{rol.idRol})"></option>
+										<option th:each="rol:${roles}"
+											th:value="${rol}"
+											th:utext="${rol.cargo}" />
 									</select>
 								</div>
 								<div class="form-group has-feedback col-md-12">
@@ -154,25 +151,6 @@
 	<!--  SCRIPTS _(JS,AJAX,JQUERY,ETC) -->
 	<div th:insert="layout/menu :: scripts"></div>
 	<!--  <div th:insert="layout/layout :: scripts"></div>-->
-
-	<script>
-		
-		//asignar evento click al bot�n con clase "btn-editar"
-		$(document).on("click",".btn-editar",function(e){
-			//obtener valor del atributo href del bot�n(etiqueta a) seleccionado.
-			var url=$(this).attr("href");
-			$.get(url,function(response){
-				console.log(response);
-				$("#codUsu").val(response.codUsu);
-				$("#estUsu").val(response.estUsu);
-				$("#logUsu").val(response.logUsu);
-				$("#pasUsu").val(response.pasUsu);
-				//$("#idTipo").val(response.tbTipoMedicamento.codTipo);
-				$("#nro_Dni").val(response.persona.nro_Dni);
-				$("#idRol").val(response.rol.idRol);
-			})
-		})
-	</script>
 
 </body>
 

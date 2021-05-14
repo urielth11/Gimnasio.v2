@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 
+
 /**
  * The persistent class for the tb_usuario database table.
  * 
@@ -86,6 +87,12 @@ public class Usuario implements Serializable {
 
 	public void setRol(Rol rol) {
 		this.rol = rol;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.codUsu;
 	}
 
 }

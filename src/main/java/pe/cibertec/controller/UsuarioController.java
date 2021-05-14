@@ -2,15 +2,19 @@ package pe.cibertec.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.cibertec.entity.Usuario;
-import pe.cibertec.service.UsuarioService;
+import pe.cibertec.service.spec.PersonaService;
+import pe.cibertec.service.spec.RolService;
+import pe.cibertec.service.spec.UsuarioService;
 
 @Controller
 @RequestMapping(value = "/usuario")
@@ -18,50 +22,47 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioS; 
+	@Autowired
+	private RolService rolS; 
+	@Autowired
+	private PersonaService personaS; 
 	
-	
-	
-	@RequestMapping(value = "/")
+	@RequestMapping(value = {"/",""})
 	public String index(Model model) {
 		try {
 			model.addAttribute("usuarios",usuarioS.listAll());
+			model.addAttribute("usuario",new Usuario());
+			model.addAttribute("titulo","Mantenimiento de Usuario");
+			model.addAttribute("roles", rolS.listAll());
+			model.addAttribute("personas", personaS.listAll());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "usuario/lista";
 	}
 	
-	@RequestMapping(value = "/agregar")
-	public String agregar(Model model) {
-		try {
-			model.addAttribute("usuario",new Usuario());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "usuario/grabar";
-	}
-	
 	@RequestMapping(value = "/editar/{id}")
-	public String editar(Model model, @PathVariable int id) {
+	@ResponseBody
+	public Usuario editar(Model model, @PathVariable String id) {
+		Usuario bean = null;
 		try {
-			model.addAttribute("usuario",usuarioS.findById(id));
+			bean = usuarioS.findById(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "usuario/grabar";
+		return bean;
 	}
-	
 	
 	@RequestMapping(value = "/grabar")
-	public String grabar(RedirectAttributes redirect, @ModelAttribute Usuario bean) {
+	public String grabar(RedirectAttributes redirect, @ModelAttribute Usuario usuario) {
 		try {
-			usuarioS.save(bean);
-			redirect.addFlashAttribute("MENSAJE","Auto registrado");
+			usuarioS.saveUpdate(usuario);
+			redirect.addFlashAttribute("MENSAJE","Usuario registrado");
 		} catch (Exception e) {
 			redirect.addFlashAttribute("MENSAJE","Error en el registro de auto");
 			e.printStackTrace();
 		}
 		
-		return "redirect:/usuario/";
+		return "redirect:/usuario";
 	}
 }

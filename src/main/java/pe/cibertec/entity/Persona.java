@@ -2,6 +2,9 @@ package pe.cibertec.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -35,14 +38,17 @@ public class Persona implements Serializable {
 
 	//bi-directional one-to-one association to Empleado
 	@OneToOne(mappedBy="persona")
+	@JsonIgnore
 	private Empleado empleado;
 
 	//bi-directional one-to-one association to Socio
 	@OneToOne(mappedBy="persona")
+	@JsonIgnore
 	private Socio socio;
 
 	//bi-directional many-to-one association to Usuario
 	@OneToMany(mappedBy="persona")
+	@JsonIgnore
 	private List<Usuario> tbUsuarios;
 
 	public Persona() {
@@ -140,6 +146,12 @@ public class Persona implements Serializable {
 		tbUsuario.setPersona(null);
 
 		return tbUsuario;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.nro_Dni;
 	}
 
 }

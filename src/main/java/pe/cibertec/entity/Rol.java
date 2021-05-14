@@ -2,6 +2,9 @@ package pe.cibertec.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -22,10 +25,12 @@ public class Rol implements Serializable {
 
 	//bi-directional many-to-one association to Menu
 	@OneToMany(mappedBy="rol")
+	@JsonIgnore
 	private List<Menu> tbMenus;
 
 	//bi-directional many-to-one association to Usuario
 	@OneToMany(mappedBy="rol")
+	@JsonIgnore
 	private List<Usuario> tbUsuarios;
 
 	public Rol() {

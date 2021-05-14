@@ -10,17 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import pe.cibertec.dao.spec.UsuarioDAO;
+import pe.cibertec.dao.spec.PersonaDAO;
+import pe.cibertec.entity.Persona;
 import pe.cibertec.entity.Usuario;
 
 @Repository
-public class UsuarioDAOImpl implements UsuarioDAO {
-	
+public class PersonaDAOImpl implements PersonaDAO {
+
 	@Autowired
 	private SessionFactory factory;
 
 	@Transactional
-	public void save(Usuario bean) {
+	public void save(Persona bean) {
 		Session session = factory.getCurrentSession();
 		try {
 			session.save(bean);
@@ -30,31 +31,31 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 	
 	@Transactional(readOnly = true)
-	public List<Usuario> listAll() {
+	public List<Persona> listAll() {
 		Query query=null;
 		Session session=factory.getCurrentSession();
 		try {
-			query=session.createQuery("select u from Usuario u");			
+			query=session.createQuery("select p from Persona p");			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return query.getResultList();
 	}
 
-	@Transactional
-	public Usuario findById(String id) {
+	@Override
+	public Persona findById(String id) {
 		Session session = factory.getCurrentSession();
-		Usuario bean = null;
+		Persona bean = null;
 		try {
-			bean = session.find(Usuario.class, id);
+			bean = session.find(Persona.class, id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return bean;
 	}
 
-	@Transactional
-	public void update(Usuario bean) {
+	@Override
+	public void update(Persona bean) {
 		Session session = factory.getCurrentSession();
 		try {
 			session.update(bean);;
@@ -64,11 +65,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		
 	}
 
-	@Transactional
+	@Override
 	public void delete(String id) {
 		Session session = factory.getCurrentSession();
 		try {
-			Usuario bean = session.find(Usuario.class, id);
+			Persona bean = session.find(Persona.class, id);
 			session.delete(bean);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -76,8 +77,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		
 	}
 
-	@Transactional
-	public void saveUpdate(Usuario bean) {
+	@Override
+	public void saveUpdate(Persona bean) {
 		Session session = factory.getCurrentSession();
 		try {
 			session.saveOrUpdate(bean);

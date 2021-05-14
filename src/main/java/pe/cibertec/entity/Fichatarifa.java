@@ -2,6 +2,9 @@ package pe.cibertec.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -25,6 +28,7 @@ public class Fichatarifa implements Serializable {
 
 	//bi-directional many-to-one association to Matricula
 	@OneToMany(mappedBy="fichatarifa")
+	@JsonIgnore
 	private List<Matricula> matriculas;
 
 	public Fichatarifa() {

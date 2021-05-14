@@ -2,6 +2,9 @@ package pe.cibertec.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -21,6 +24,7 @@ public class Socio implements Serializable {
 
 	//bi-directional many-to-one association to Matricula
 	@OneToMany(mappedBy="socio")
+	@JsonIgnore
 	private List<Matricula> matriculas;
 
 	//bi-directional one-to-one association to Persona

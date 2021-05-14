@@ -5,27 +5,51 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.cibertec.dao.UsuarioDAO;
+import pe.cibertec.dao.spec.UsuarioDAO;
 import pe.cibertec.entity.Usuario;
+import pe.cibertec.service.spec.UsuarioService;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 
 	@Autowired
-	private UsuarioDAO autoDAO;
+	private UsuarioDAO usuarioDAO;
 	
 	public void save(Usuario bean) {
-		autoDAO.save(bean);
+		bean.setCodUsu("U"+String.format("%09d",usuarioDAO.listAll().size()+1));//generacion de codigo U000000001
+		bean.setEstUsu(1);//por defecto Usuario debe ser activo
+		usuarioDAO.save(bean);
 	}
 
 	@Override
 	public List<Usuario> listAll() {
-		return autoDAO.listAll();
+		return usuarioDAO.listAll();
 	}
 
 	@Override
-	public Usuario findById(int id) {
-		return autoDAO.findById(id);
+	public void update(Usuario bean) {
+		usuarioDAO.update(bean);
+	}
+
+	@Override
+	public void delete(String id) {
+		Usuario bean = usuarioDAO.findById(id);
+		bean.setEstUsu(0);
+		usuarioDAO.update(bean);
+	}
+
+	@Override
+	public void saveUpdate(Usuario bean) {
+		if("".equals(bean.getCodUsu())) {
+			bean.setCodUsu("U"+String.format("%09d",usuarioDAO.listAll().size()+1));//generacion de codigo U000000001
+			bean.setEstUsu(1);//por defecto Usuario debe ser activo
+		}
+		usuarioDAO.saveUpdate(bean);
+	}
+
+	@Override
+	public Usuario findById(String id) {
+		return usuarioDAO.findById(id);
 	}
 
 }
