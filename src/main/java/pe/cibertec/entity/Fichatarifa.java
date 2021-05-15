@@ -25,6 +25,8 @@ public class Fichatarifa implements Serializable {
 	private double precio;
 
 	private String tiempo;
+	
+	private int estado;
 
 	//bi-directional many-to-one association to Matricula
 	@OneToMany(mappedBy="fichatarifa")
@@ -40,6 +42,14 @@ public class Fichatarifa implements Serializable {
 
 	public void setIdTarifa(String idTarifa) {
 		this.idTarifa = idTarifa;
+	}
+
+	public int getEstado() {
+		return estado;
+	}
+
+	public void setEstado(int estado) {
+		this.estado = estado;
 	}
 
 	public int getCantidad() {

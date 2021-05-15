@@ -29,7 +29,7 @@ public class Socio implements Serializable {
 
 	//bi-directional one-to-one association to Persona
 	@OneToOne
-	@JoinColumn(name="Socio_Nro_Dni")
+	@JoinColumn(name="Socio_Nro_Dni", insertable = false, updatable = false)
 	private Persona persona;
 
 	public Socio() {
