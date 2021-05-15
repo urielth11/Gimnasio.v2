@@ -223,28 +223,6 @@
 				$("#nombres").val(response.persona.nombres);
 			})
 		})
-		//asignar evento click al boton con clase "btn-nuevo"
-		$(document).on("click", ".btn-nuevo", function (e) {
-			$("#codUsu").val("");
-			$("#logUsu").val("");
-			$("#pasUsu").val("");
-			$("#nro_Dni").val(0);
-			$("#idRol").val(0);
-			$("#estUsu").val(1);
-		})
-		//asignar evento click al bot�n con clase "btn-eliminar"
-		$(document).on("click", ".btn-eliminar", function (e) {
-			event.preventDefault();//indicar por defecto la acci�n principal del bot�n(etiqueta a) y anular el atributo href
-			var url = $(this).attr("href");
-			alertify.confirm("SISTEMA", "Seguro de cambiar el estado!",
-				function () {//si
-					window.location = url;
-				},
-				function () {//no 
-					alertify.error('Cancelado!')
-				}).
-				set('labels', { ok: 'Si', cancel: 'No' });
-		})
 	</script>
 
 </body>
