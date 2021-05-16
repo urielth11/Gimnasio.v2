@@ -25,7 +25,7 @@ public class MatriculaServiceImpl implements MatriculaService {
 		c.add(Calendar.MONTH, ftDAO.findById(bean.getFichatarifa().getIdTarifa()).getCantidad());
 		bean.setFechaSalida(c.getTime());
 		bean.setCodMatricula("M"+String.format("%04d",matriculaDAO.listAll().size()+1));//generacion de codigo U000000001
-		bean.setTipo(1);//por defecto debe ser activo
+		bean.setTipo(0);//por defecto debe ser inactivo hasta generar comprobante de pago
 		matriculaDAO.save(bean);
 	}
 

@@ -44,7 +44,6 @@ public class MatriculaController {
 			model.addAttribute("matricula",bean);
 			model.addAttribute("socio",new Socio());
 			model.addAttribute("titulo","Registra Ficha de Matricula");
-			model.addAttribute("hoy",new SimpleDateFormat("dd-MM-yyyy").format(myDate));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
