@@ -1,0 +1,79 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="layout/menu :: head"></head>
+
+<body class=" layout-fixed">
+	<!-- BODY -->
+	<div class="wrapper">
+		<!-- WRAPPER -->
+		<nav class="main-header navbar ">
+			<!-- NAVBAR -->
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+				</li>
+			</ul>
+		</nav>
+
+		<aside th:insert="layout/menu :: aside"></aside>
+		<!-- MENU ASIDE -->
+
+		<div class="content-wrapper">
+			<!-- CONTENIDO DE LA PAGINA -->
+			<div class="container-table-index py-4">
+				<!-- PY4 ES MARGIN TOP -->
+				<div class="card bg-light">
+					<div class="card-header">
+						<!-- Head-->
+						<h5 th:text="${titulo}"></h5>
+					</div>
+					<div class="card-body">
+						<!-- body-->
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered display" id="example">
+										<thead class="thead-inverse">
+											<tr>
+												<th>Codigo</th>
+												<th>Dni</th>
+												<th>Nombres</th>
+												<th>Apellidos</th>
+												<th>Inicio</th>
+												<th>Fin</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="asi : ${asistencias}">
+												<td th:text="${asi.idFichaAsistecia}"></td>
+												<td th:text="${asi.matricula.socio.persona.nro_Dni}"></td>
+												<td th:text="${asi.matricula.socio.persona.nombres}"></td>
+												<td th:text="${asi.matricula.socio.persona.apellidos}"></td>
+												<td th:text="${asi.hInicio}"></td>
+												<td th:text="${asi.hFin}"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /CONTENIDO DE LA PAGINA -->
+	</div>
+	<!-- /WRAPPER -->
+
+	<!-- FOOTER -->
+	<footer th:replace="layout/menu :: footer"> </footer>
+
+	<!--  SCRIPTS _(JS,AJAX,JQUERY,ETC) -->
+	<div th:insert="layout/menu :: scripts"></div>
+	<!--  <div th:insert="layout/layout :: scripts"></div>-->
+
+</body>
+
+</html>
