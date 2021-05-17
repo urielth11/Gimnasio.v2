@@ -40,7 +40,7 @@ public class RolDAOImpl implements RolDAO {
 		return query.getResultList();
 	}
 
-	@Override
+	@Transactional(readOnly = true)
 	public Rol findById(String id) {
 		Session session = factory.getCurrentSession();
 		Rol bean = null;
@@ -52,7 +52,7 @@ public class RolDAOImpl implements RolDAO {
 		return bean;
 	}
 
-	@Override
+	@Transactional
 	public void update(Rol bean) {
 		Session session = factory.getCurrentSession();
 		try {
@@ -63,7 +63,7 @@ public class RolDAOImpl implements RolDAO {
 		
 	}
 
-	@Override
+	@Transactional
 	public void delete(String id) {
 		Session session = factory.getCurrentSession();
 		try {
@@ -75,7 +75,7 @@ public class RolDAOImpl implements RolDAO {
 		
 	}
 
-	@Override
+	@Transactional
 	public void saveUpdate(Rol bean) {
 		Session session = factory.getCurrentSession();
 		try {

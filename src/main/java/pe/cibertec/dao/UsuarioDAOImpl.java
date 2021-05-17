@@ -41,7 +41,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return query.getResultList();
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public Usuario findById(String id) {
 		Session session = factory.getCurrentSession();
 		Usuario bean = null;

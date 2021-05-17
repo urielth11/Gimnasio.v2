@@ -40,7 +40,7 @@ public class MatriculaDAOImpl implements MatriculaDAO {
 		return query.getResultList();
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public Matricula findById(String id) {
 		Session session = factory.getCurrentSession();
 		Matricula bean = null;

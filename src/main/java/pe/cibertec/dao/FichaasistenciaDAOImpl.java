@@ -40,7 +40,7 @@ public class FichaasistenciaDAOImpl implements FichaasistenciaDAO {
 		return query.getResultList();
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public Fichaasistecia findById(Integer id) {
 		Session session = factory.getCurrentSession();
 		Fichaasistecia bean = null;

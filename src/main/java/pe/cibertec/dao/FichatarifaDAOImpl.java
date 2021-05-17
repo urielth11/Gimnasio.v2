@@ -40,7 +40,7 @@ public class FichatarifaDAOImpl implements FichatarifaDAO {
 		return query.getResultList();
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public Fichatarifa findById(String id) {
 		Session session = factory.getCurrentSession();
 		Fichatarifa bean = null;

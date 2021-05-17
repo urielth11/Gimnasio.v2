@@ -46,6 +46,13 @@ public class SocioServiceImpl implements SocioService {
 
 	@Override
 	public void saveUpdate(Socio bean) {
+		bean.getPersona().setNro_Dni(bean.getSocio_Nro_Dni());
+		if(bean.getEstado()==0) {
+			bean.setEstado(0);//por defecto debe ser activo
+		}else {
+			bean.setEstado(1);
+		}
+		personaDAO.saveUpdate(bean.getPersona());
 		socioDAO.saveUpdate(bean);
 	}
 

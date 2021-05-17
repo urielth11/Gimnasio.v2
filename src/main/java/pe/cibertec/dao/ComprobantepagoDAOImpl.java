@@ -40,7 +40,7 @@ public class ComprobantepagoDAOImpl implements ComprobantepagoDAO {
 		return query.getResultList();
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public Comprobantepago findById(String id) {
 		Session session = factory.getCurrentSession();
 		Comprobantepago bean = null;

@@ -42,7 +42,7 @@ public class PersonaDAOImpl implements PersonaDAO {
 		return query.getResultList();
 	}
 
-	@Override
+	@Transactional(readOnly = true)
 	public Persona findById(String id) {
 		Session session = factory.getCurrentSession();
 		Persona bean = null;
@@ -54,7 +54,7 @@ public class PersonaDAOImpl implements PersonaDAO {
 		return bean;
 	}
 
-	@Override
+	@Transactional
 	public void update(Persona bean) {
 		Session session = factory.getCurrentSession();
 		try {
@@ -65,7 +65,7 @@ public class PersonaDAOImpl implements PersonaDAO {
 		
 	}
 
-	@Override
+	@Transactional
 	public void delete(String id) {
 		Session session = factory.getCurrentSession();
 		try {
@@ -77,7 +77,7 @@ public class PersonaDAOImpl implements PersonaDAO {
 		
 	}
 
-	@Override
+	@Transactional
 	public void saveUpdate(Persona bean) {
 		Session session = factory.getCurrentSession();
 		try {

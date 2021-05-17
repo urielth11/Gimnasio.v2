@@ -41,7 +41,7 @@ public class SocioDAOImpl implements SocioDAO {
 		return query.getResultList();
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public Socio findById(String id) {
 		Session session = factory.getCurrentSession();
 		Socio bean = null;
