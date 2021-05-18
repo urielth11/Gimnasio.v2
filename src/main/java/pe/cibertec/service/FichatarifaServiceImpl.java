@@ -17,7 +17,7 @@ public class FichatarifaServiceImpl implements FichatarifaService {
 	
 	@Override
 	public void save(Fichatarifa bean) {
-		bean.setIdTarifa("F"+String.format("%09d",fichaTDAO.listAll().size()+1));//generacion de codigo U000000001
+		bean.setIdTarifa("T"+String.format("%09d",fichaTDAO.listAll().size()+1));//generacion de codigo U000000001
 		bean.setEstado(1);//por defecto debe ser activo
 		fichaTDAO.save(bean);
 	}
@@ -44,7 +44,7 @@ public class FichatarifaServiceImpl implements FichatarifaService {
 	@Override
 	public void saveUpdate(Fichatarifa bean) {
 		if("".equals(bean.getIdTarifa())) {
-			bean.setIdTarifa("F"+String.format("%09d",fichaTDAO.listAll().size()+1));//generacion de codigo U000000001
+			bean.setIdTarifa("T"+String.format("%09d",fichaTDAO.listAll().size()+1));//generacion de codigo U000000001
 			bean.setEstado(1);//por defecto debe ser activo
 		}
 		fichaTDAO.saveUpdate(bean);
