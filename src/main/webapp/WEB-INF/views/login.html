@@ -1,0 +1,116 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="layout/menu :: head"></head>
+
+<body class=" layout-fixed">
+	<!-- BODY -->
+	<div class="wrapper">
+		<!-- WRAPPER 
+		<nav class="main-header navbar ">
+			<!-- NAVBAR -->
+			<!-- Left navbar links -->
+			<!--<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+				</li>
+			</ul>
+		</nav>-->
+
+		<!--<aside th:insert="layout/menu :: aside"></aside>
+		<!-- MENU ASIDE -->
+
+		<div class="content-wrapper">
+			<!-- CONTENIDO DE LA PAGINA -->
+			<div class="container-table-index py-4">
+				<!-- PY4 ES MARGIN TOP -->
+				<div class="card bg-light">
+					<div class="card-header">
+						<!-- Head-->
+						<h5 th:text="${titulo}"></h5>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="alert alert-danger" th:if="${param.error}">Usuario y/o clave incorrectos</div>
+								<div class="alert alert-success" th:if="${param.logout}">Sesion cerrada</div>
+								<form action="login" method="post">
+									<div class="form-group">
+										<i class="fa fa-user"></i>
+										<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+									</div>
+									<div class="form-group">
+										<i class="fa fa-lock"></i>
+										<input type="password" class="form-control" name="password" placeholder="Password" required="required">					
+									</div>
+									<div class="pie">
+										<input type="submit" class="btn btn-primary btn-sm" aria-pressed="true"value="Iniciar">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /CONTENIDO DE LA PAGINA -->
+	</div>
+	<!-- /WRAPPER -->
+
+
+	<!-- FOOTER -->
+	<!--<footer th:replace="layout/menu :: footer"> </footer>-->
+
+	<!--  SCRIPTS _(JS,AJAX,JQUERY,ETC) -->
+	<div th:insert="layout/menu :: scripts"></div>
+	<!--  <div th:insert="layout/layout :: scripts"></div>-->
+
+	<script th:inline="javascript" th:if="${MENSAJE!=null}">
+		//obtener atributo MENSAJE
+		var mensaje =/*[[${MENSAJE}]]*/ null;
+		toastr.success(mensaje, toastr.options = {
+			"timeOut": "2000",
+			"positionClass ": " toast-top-right ",
+		});
+	</script>
+	<script>
+		//asignar evento click al boton con clase "btn-editar"
+		$(document).on("click", ".btn-editar", function (e) {
+			var url = $(this).attr("href");
+			$.get(url, function (response) {
+				console.log(response);
+				$("#codUsu").val(response.codUsu);
+				$("#estUsu").val(response.estUsu);
+				$("#logUsu").val(response.logUsu);
+				$("#pasUsu").val(response.pasUsu);
+				$("#nro_Dni").val(response.persona.nro_Dni);
+				$("#idRol").val(response.rol.idRol);
+			})
+		})
+		//asignar evento click al boton con clase "btn-nuevo"
+		$(document).on("click", ".btn-nuevo", function (e) {
+			$("#codUsu").val("");
+			$("#logUsu").val("");
+			$("#pasUsu").val("");
+			$("#nro_Dni").val(0);
+			$("#idRol").val(0);
+			$("#estUsu").val(1);
+		})
+		//asignar evento click al bot�n con clase "btn-eliminar"
+		$(document).on("click", ".btn-eliminar", function (e) {
+			event.preventDefault();//indicar por defecto la acci�n principal del bot�n(etiqueta a) y anular el atributo href
+			var url = $(this).attr("href");
+			alertify.confirm("SISTEMA", "Seguro de cambiar el estado!",
+				function () {//si
+					window.location = url;
+				},
+				function () {//no 
+					alertify.error('Cancelado!')
+				}).
+				set('labels', { ok: 'Si', cancel: 'No' });
+		})
+	</script>
+
+</body>
+
+</html>
