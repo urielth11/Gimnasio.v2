@@ -7,5 +7,5 @@ import pe.cibertec.entity.Usuario;
 
 public interface UsuarioDAO extends CrudDAO<Usuario, String> {
 	public Usuario iniciarSesion(String vLogin);
-	public List<Menu> traerEnlaces(int idRol);
+	public List<Menu> traerEnlaces(String cargo);
 }

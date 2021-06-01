@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pe.cibertec.dao.spec.UsuarioDAO;
+import pe.cibertec.entity.Menu;
 import pe.cibertec.entity.Usuario;
 import pe.cibertec.service.spec.UsuarioService;
 
@@ -57,6 +58,11 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario findById(String id) {
 		return usuarioDAO.findById(id);
+	}
+
+	@Override
+	public List<Menu> traerEnlaces(String cargo) {
+		return usuarioDAO.traerEnlaces(cargo);
 	}
 
 }

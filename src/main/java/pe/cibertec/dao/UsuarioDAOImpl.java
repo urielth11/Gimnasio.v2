@@ -120,16 +120,17 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		return bean;
 	}
 
+	@Transactional(readOnly = true)
 	@Override
-	public List<Menu> traerEnlaces(int idRol) {
+	public List<Menu> traerEnlaces(String cargo) {
 		Session session=factory.getCurrentSession();
 		List<Menu> lista=null;
 		Query query=null;
 		try {
 			//String hql="select e from RolEnlace re join re.enlace e where re.rol.idrol=?1";
-			String hql="select m from Menu m where m.rol.idRol=?1";
+			String hql="select m from Menu m where m.rol.cargo=?1";
 			query=session.createQuery(hql);
-			query.setParameter(1, idRol);
+			query.setParameter(1, cargo);
 			lista=query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -31,8 +31,6 @@ public class LoginService implements UserDetailsService {
 		rol.add(new SimpleGrantedAuthority(bean.getRol().getCargo()));
 		
 		userDet=new User(bean.getLogUsu(), bean.getPasUsu(),rol);
-		//bean.getRol().getDescripcion()
-		
 		
 		return userDet;
 	}
