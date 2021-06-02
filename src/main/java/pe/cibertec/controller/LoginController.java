@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -23,8 +24,8 @@ public class LoginController {
 	@Autowired
 	private UsuarioService usuarioS; 
 	
-	@RequestMapping(value = {"/"})
-	public String index(Model model, HttpServletRequest request) {
+	@RequestMapping(value = {"/principal"})
+	public String principal(Model model, HttpSession  session) {
 		try {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			/*if (request.isUserInRole("Administrador")) {
@@ -38,7 +39,7 @@ public class LoginController {
 			User user = (User)authentication.getPrincipal();
 			
 			List<Menu> menus = usuarioS.traerEnlaces(roles.stream().findFirst().get());
-			request.getSession().setAttribute("menus", menus);
+			session.setAttribute("menus", menus);
 			
 			System.out.println(user.getUsername());
 			System.out.println("");
@@ -48,10 +49,10 @@ public class LoginController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/asistencia";
+		return "redirect:/usuario";
 	}
 	
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = {"/login","/"})
 	public String login(Model model) {
 		try {
 		} catch (Exception e) {

@@ -26,6 +26,7 @@ public class Menu implements Serializable {
 
 	//bi-directional many-to-one association to Rol
 	@ManyToOne
+	@JoinColumn(name="Rol_idRol")
 	private Rol rol;
 
 	public Menu() {

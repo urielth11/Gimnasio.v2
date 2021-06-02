@@ -32,13 +32,26 @@ public class AsistenciaController {
 		return "asistencia/lista";
 	}
 	
+	@RequestMapping(value = "/nuevo")
+	public String nuevo(Model model) {
+		try {
+			model.addAttribute("asistencias",asistenciaS.listAll());
+			model.addAttribute("titulo","Cronograma de Asistencia");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//return "asistencia/nuevo";//por crear
+		return "asistencia/lista";
+	}
+	
 	@RequestMapping(value = "/grabar")
 	public String grabar(RedirectAttributes redirect, @ModelAttribute Fichaasistecia asistencia) {
 		try {
 			asistenciaS.save(asistencia);
-			redirect.addFlashAttribute("MENSAJE","Comprobante grabado");
+			redirect.addFlashAttribute("MENSAJE","Asistencia grabado");
 		} catch (Exception e) {
-			redirect.addFlashAttribute("MENSAJE","Error al grabar comprobante");
+			redirect.addFlashAttribute("MENSAJE","Error al grabar asistencia");
 			e.printStackTrace();
 		}
 		

@@ -4,7 +4,7 @@
 <head th:fragment="head">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IGH | Chooseyou</title>
+	<title>Gimnasio</title>
 
 	<!-- Para que sea responsive -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,7 +63,7 @@
 				<li class="nav-item"><a class="nav-link" href="#about" th:href="@{/listar}">Cliente</a></li>
 			</ul>
 			<ul class="navbar-nav navbar-right">
-				<li sec:authorize="!isAuthenticated()"><a class="btn btn-outline-primary" th:href="@{/login}">Sign
+				<li sec:authorize="isAuthenticated()"><a class="btn btn-outline-primary" th:href="@{/login}">Sign
 						In</a></li>
 
 				<li sec:authorize="isAuthenticated()" class="dropdown show">
@@ -99,8 +99,7 @@
 		<!--sidebar-dark-primary-->
 		<!-- Brand Logo -->
 		<a href="#" class="brand-link"> <img th:src="@{/resources/images/LOGO.png}" alt="IGH Logo"
-				class="brand-image" /> <span class="brand-text">IGH
-				Ingenieria</span>
+				class="brand-image" /> <span class="brand-text">Gimnasio</span>
 		</a>
 
 		<!-- Sidebar -->
@@ -110,7 +109,8 @@
 				<div>
 					<img th:src="@{/resources/menu/dist/img/avatar5.png}" alt="Imagene del usuario">
 					<div class="info">
-						<a href="#"><span sec:authentication="principal.user.name"></span></a>
+						Logged user: <span sec:authentication="name">Bob</span><br>
+Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
 					</div>
 				</div>
 			</div>
@@ -122,44 +122,23 @@
 					<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 					<li class="nav-item has-treeview menu-open"></li>
-					<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item has-treeview"><a th:href="@{/colaborador}"
+					<!--<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item has-treeview"><a th:href="@{/colaborador}"
 							class="nav-link">
-							Colaboradores </a></li>
-					<li class="nav-item has-treeview"><a th:href="@{/colaborador/productivo}" class="nav-link">
-							Productividad </a></li>
-
-					<li class="nav-item has-treeview"><a href="#" class="nav-link">
-							Proyectos <i class="fas fa-angle-left right"></i>
-
-
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item"><a th:href="@{/workorders}" class="nav-link">
-									WO </a></li>
-							<li class="nav-item"><a th:href="@{/preorders}" class="nav-link">
-									Pre WO </a></li>
-							<li class="nav-item"><a th:href="@{/tareas}" class="nav-link">
-									Tareas </a></li>
-							<li class="nav-item"><a th:href="@{/pi}" class="nav-link">
-									PI </a></li>
-
-
+							Colaboradores </a></li>-->
+					<li class="nav-item has-treeview" >
+						<a href="#" class="nav-link" th:text="${session.menus[0].rol.cargo}"><i class="fas fa-angle-left right"></i></a>
+						<ul class="nav nav-treeview" th:each="men : ${session.menus}">
+							<li class="nav-item"><a th:text="${men.desMenu}" th:href="@{/} + ${men.urlMenu}" class="nav-link"></a></li>
 						</ul>
 					</li>
-
-
-					<li class="nav-item has-treeview"><a href="#" class="nav-link">
-							<i class="fas fa-cog"></i> Configuracion
-
-						</a></li>
-					<li class="nav-item has-treeview" sec:authorize="isAuthenticated()">
+					<li class="nav-item has-treeview" sec:authorize="!isAuthenticated()">
 
 						<form id="logoutForm" th:action="@{/logout}" method="post">
 							<button class="dropdown-item" onclick="document.getElementById('logoutForm').submit();"
 								type="submit"><i class="fas fa-key"></i> Cerrar Sesion</button>
 							<!--  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
 						</form>
-
+					</li>
 
 
 
