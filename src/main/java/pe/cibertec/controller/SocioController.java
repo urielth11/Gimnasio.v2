@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import pe.cibertec.entity.Persona;
 import pe.cibertec.entity.Socio;
 import pe.cibertec.service.spec.SocioService;
 
@@ -37,7 +38,9 @@ public class SocioController {
 	public String nuevo(Model model) {
 		try {
 			Socio bean = new Socio();
-			bean.getPersona().setGenero("0");
+			Persona persona = new Persona();
+			persona.setGenero("0");
+			bean.setPersona(persona);
 			
 			model.addAttribute("socio",bean);
 			model.addAttribute("titulo","Registrar Socio");

@@ -106,12 +106,12 @@
 		<div class="sidebar">
 			<!-- user panel = la imagen del colaborador -->
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-				<div>
+				<div class="info">
 					<img th:src="@{/resources/menu/dist/img/avatar5.png}" alt="Imagene del usuario">
-					<div class="info">
-						Logged user: <span sec:authentication="name">Bob</span><br>
-Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
-					</div>
+				</div>
+				<div class="info">
+					Usuario: <span th:text="${session.usuarioLogueado}"></span><br>
+					Rol: <span th:text="${session.rolLogueado}"></span>
 				</div>
 			</div>
 
@@ -204,16 +204,12 @@ Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]<
 
 
 	<footer th:fragment="footer" class="main-footer">
-		<strong>Todos los derechos reservados - 2020 | <a href="http://ingenieria.ighgroup.com/">IGH INGENIERIA</a>.
-			<img th:src="@{/resources/images/LOGO.png}" alt="" width="5%" height="5%" />
+		<strong>Todos los derechos reservados - 2020
 		</strong>
 		<br>
-		<p sec:authorize="isAuthenticated()">
-			Usuario logeado: <span sec:authentication="name"></span> | Roles: <span
-				sec:authentication="principal.authorities"></span>
-		</p>
+		
 		<div class="float-right d-none d-sm-inline-block">
-			<b>Chooseyou!</b>
+			<b>Gimnasio</b>
 		</div>
 	</footer>
 

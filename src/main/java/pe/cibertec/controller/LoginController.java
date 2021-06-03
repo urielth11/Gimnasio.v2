@@ -40,7 +40,8 @@ public class LoginController {
 			
 			List<Menu> menus = usuarioS.traerEnlaces(roles.stream().findFirst().get());
 			session.setAttribute("menus", menus);
-			
+			session.setAttribute("usuarioLogueado", user.getUsername());
+			session.setAttribute("rolLogueado", roles.stream().findFirst().get());
 			System.out.println(user.getUsername());
 			System.out.println("");
 			System.out.println(roles.stream().findFirst().get());
